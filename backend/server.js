@@ -9,8 +9,9 @@ import messageRoutes from './routes/message.routes.js'
 import userRoutes from './routes/user.routes.js'
 
 import connectMongo from './db/connectMongo.js'
+import { app, server } from './socket/socket.js'
 
-const app = express()
+
 const PORT = process.env.PORT || 6000
 
 app.use(express.json())
@@ -26,7 +27,7 @@ app.get('/',(req,res)=>{
     res.send("Server is Running!!")
 })
 
-app.listen(PORT, ()=>{
+server.listen(PORT, ()=>{
     connectMongo()
     console.log(`server is running on ${PORT}`);
 })
